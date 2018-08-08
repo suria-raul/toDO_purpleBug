@@ -1,0 +1,37 @@
+#main-box {
+	text-align: center;
+	width: 300px;
+	height: 300px;
+	border: 2px solid black;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+}
+
+#fullName,
+#bread,
+#sauce,
+#sandwichType, 
+#cheese,
+#veggies,
+#button {
+	border: 1px solid black;
+	margin: 10px 20px 0px 20px;
+	width: 200px;
+}
+
+#button {
+	background-color: #37b166;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+#button:hover {
+	background-color: #00ff05;
+} 
+
+#hidden_order_id {
+	display: none;
+}
