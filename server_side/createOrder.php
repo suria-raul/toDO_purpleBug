@@ -20,5 +20,3 @@ $retrieve = mysqli_query($connection, $sqlRetrieveQuery);
 $orderSummary = mysqli_fetch_assoc($retrieve);
 
 echo json_encode($orderSummary);
-
- ?>

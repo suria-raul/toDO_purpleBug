@@ -58,5 +58,3 @@ $data = "<table class='table'>
     $data .= '</table>';
 
     echo $data;
-
- ?>

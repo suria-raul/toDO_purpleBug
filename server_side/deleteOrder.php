@@ -12,5 +12,3 @@ if (!$delete) {
 } else {
 	echo "Deleted Successfully";
 }
-
- ?>

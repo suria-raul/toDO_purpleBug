@@ -17,5 +17,3 @@ if (!$result = mysqli_query($connection, $updateQuery)) {
 	}
 
 echo "Success";
-
- ?>
