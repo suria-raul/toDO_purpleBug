@@ -28,22 +28,22 @@ $data = "<table class='table'>
         while($row = mysqli_fetch_assoc($result))
         {
             $data .= '<tr>
-                <td>'.$number.'</td>
-                <td>'.$row['user'].'</td>
-                <td>'.$row['bread'].'</td>
-                <td>'.$row['sauce'].'</td>
-                <td>'.$row['sandwich'].'</td>
-                <td>'.$row['cheese'].'</td>
-                <td>'.$row['veggie'].'</td>
-                <td>'.$row['order_at'].'</td>
+                <td>' . $number . '</td>
+                <td>' . $row['user'] . '</td>
+                <td>' . $row['bread'] . '</td>
+                <td>' . $row['sauce'] . '</td>
+                <td>' . $row['sandwich'] . '</td>
+                <td>' . $row['cheese'] . '</td>
+                <td>' . $row['veggie'] . '</td>
+                <td>' . $row['order_at'] . '</td>
                 <td>
-                    <button class="btn btn-danger" onclick="deleteOrder('.$row['order_id'].')">Delete</button>
+                    <button class="btn btn-danger" onclick="deleteOrder(' . $row['order_id'] . ')">Delete</button>
                 </td>
                 <td>
-                    <button data-toggle="modal" data-target="#myModal" class="btn btn-warning" onclick="getOrderDetails('.$row['order_id'].')">Update</button>
+                    <button data-toggle="modal" data-target="#myModal" class="btn btn-warning" onclick="getOrderDetails(' . $row['order_id'] . ')">Update</button>
                 </td>
                 <td>
-                    <button class="btn btn-primary" onclick="JSONviewer('.$row['order_id'].')">JSON</button>
+                    <button class="btn btn-primary" onclick="JSONviewer(' . $row['order_id'] . ')">JSON</button>
                 </td>                
             </tr>';
             $number++;
