@@ -40,21 +40,6 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`order_id`, `bread`, `sauce`, `sandwich`, `cheese`, `veggie`, `user`, `order_at`) VALUES
-(21, 'Jalapeno Parmesan', 'Honey Mustard', 'Savory Ham', 'Pepperjack', 'Peppers and Banana', 'Another Test', '2018-08-08 07:03:55pm'),
-(22, 'Whole Wheat', 'Mayo', 'Turkey Bacon Club', 'American', 'Onion', 'Edited again', '2018-08-08 07:04:38pm'),
-(23, 'Jalapeno Parmesan', 'Spicy Mayo', 'Italian', 'Pepperjack', 'Peppers and Banana', 'tester edited', '2018-08-08 07:05:49pm'),
-(24, 'Jalapeno Parmesan', 'Spicy Mayo', 'Italian', 'Pepperjack', 'Peppers and Banana', 'Final Added Test', '2018-08-08 07:11:51pm'),
-(25, 'Jalapeno Parmesan', 'Honey Mustard', 'Savory Ham', 'Pepperjack', 'Peppers and Banana', 'FInal Added test', '2018-08-08 07:13:10pm'),
-(26, 'Jalapeno Parmesan', 'Spicy Mayo', 'Italian', 'Pepperjack', 'Peppers and Jalapeno', 'final final final', '2018-08-08 07:14:19pm'),
-(27, 'Jalapeno Parmesan', 'Spicy Mayo', 'Italian', 'Pepperjack', 'Peppers and Banana', 'final final final final', '2018-08-08 07:16:25pm');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
