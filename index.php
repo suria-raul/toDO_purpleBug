@@ -8,7 +8,7 @@
     <title>ToDo_PurpleBug</title>
     <link rel="stylesheet" href="css/style.css">
 
-    <script src="js/script.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body>
 <div id="main-box">
@@ -64,6 +64,6 @@
 
 </div>
 <p>Submitted By: Raul Suria Jr</p>
-<a href="allOrders.php">View all orders</a>
+<a href="orders.php">View all orders</a>
 </body>
 </html>
