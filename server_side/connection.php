@@ -1,3 +1,3 @@
-<?php 
+<?php
 
-$connection = mysqli_connect("db","db","db","db");
+$connection = mysqli_connect("db", "db", "db", "db");
