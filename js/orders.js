@@ -36,7 +36,7 @@ function loadOrders() {
                 showOrder.textContent = 'Edit'
                 viewJson.textContent = 'View Json'
 
-                number.textContent = row.order_id
+                number.textContent = index
                 user.textContent = row.user
                 bread.textContent = row.bread
                 sauce.textContent = row.sauce

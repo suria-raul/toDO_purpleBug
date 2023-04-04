@@ -4,13 +4,13 @@ namespace App;
 
 class Database {
 
-    private $host = 'db';
+    private string $host = 'db';
 
-    private $username = 'db';
+    private string $username = 'db';
 
-    private $password = 'db';
+    private string $password = 'db';
 
-    private $database = 'db';
+    private string $database = 'db';
 
     protected $connection;
 

@@ -6,8 +6,6 @@ use App\Database;
 
 class Order
 {
-    protected $result;
-
     protected Database $database;
 
     public array $data = [];
@@ -15,27 +13,28 @@ class Order
     public function __construct()
     {
         $this->database = new Database();
-        $this->result = mysqli_query($this->database->connect(), "SELECT * FROM orders");
     }
 
-    private function isConnected()
+    private function isConnected($query)
     {
-        if (!$this->result) {
+        if (!$query) {
             exit(mysqli_error($this->database->connect()));
         }
 
         return true;
     }
 
-    private function hasData()
+    private function hasData($query)
     {
-        return mysqli_num_rows($this->result) > 0;
+        return mysqli_num_rows($query) > 0;
     }
 
     public function all()
     {
-        if ($this->isConnected() && $this->hasData()) {
-            while ($row = mysqli_fetch_assoc($this->result)) {
+        $query = mysqli_query($this->database->connect(), "SELECT * FROM orders");
+
+        if ($this->isConnected($query) && $this->hasData($query)) {
+            while ($row = mysqli_fetch_assoc($query)) {
                 $this->data[] = $row;
             }
         } else {
