@@ -73,16 +73,12 @@ function UpdateOrders(){
 }
 
 function JSONviewer(id){
-	var hidden = document.getElementById("hidden_order_id").value = id;
-	var xmlGet = new XMLHttpRequest();
-	xmlGet.open("POST","src/getOrderDetails.php",true);
-	xmlGet.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
-	xmlGet.onreadystatechange = function(){
-		if (this.readyState == 4 && this.status == 200) {
-			alert(this.responseText);
+	$.ajax({
+		type: "POST",
+		url: "src/getOrderDetails.php",
+		data: {order_id: id},
+		success: function(response) {
+			alert(response)
 		}
-	}
-
-	xmlGet.send("order_id="+hidden);
+	})
 }
