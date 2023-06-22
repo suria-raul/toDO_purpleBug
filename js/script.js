@@ -1,26 +1,21 @@
 function order(){
- 	var http = new XMLHttpRequest();
-	var fullName = document.getElementById('fullName').value;
-	var bread = document.getElementById('bread').value;
-	var sauce = document.getElementById('sauce').value;
-	var sandwichType = document.getElementById('sandwichType').value;
-	var cheese = document.getElementById('cheese').value;
-	var veggies = document.getElementById('veggies').value;
-	var request = "fullName="+fullName+"&bread="+bread+"&sauce="+sauce+"&sandwichType="+sandwichType+"&cheese="+cheese+"&veggies="+veggies;	
-
-	http.open("POST","src/createOrder.php", true);
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-	http.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var result = this.responseText
-			var summary = JSON.parse(result);
-			alert("Order Summary \n"+"bread:"+summary.bread+"\n"+"sauce:"+summary.sauce+"\n"+"sandwich type:"+summary.sandwich+"\n"+"cheese:"+summary.cheese+"\n"+"veggie:"+summary.veggie);
+	$.ajax({
+		type: "POST",
+		url: "src/createOrder.php",
+		data: {
+			fullName: $('#fullName').val(),
+			bread: $('#bread').val(),
+			sauce: $('#sauce').val(),
+			sandwichType: $('#sandwichType').val(),
+			cheese: $('#cheese').val(),
+			veggies: $('#veggies').val(),
+		},
+		success: function(response) {
+			let summary = JSON.parse(response)
+			alert("Order Summary \n"+"bread:"+summary.bread+"\n"+"sauce:"+summary.sauce+"\n"+"sandwich type:"+summary.sandwich+"\n"+"cheese:"+summary.cheese+"\n"+"veggie:"+summary.veggie)
 			window.location = "index.php";
 		}
-	}
-
-	http.send(request);
+	})
 
 }
 
