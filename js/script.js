@@ -1,8 +1,3 @@
-window.onload = function(){
-  	loadOrders();
-	}
-
-
 function order(){
  	var http = new XMLHttpRequest();
 	var fullName = document.getElementById('fullName').value;
@@ -13,7 +8,7 @@ function order(){
 	var veggies = document.getElementById('veggies').value;
 	var request = "fullName="+fullName+"&bread="+bread+"&sauce="+sauce+"&sandwichType="+sandwichType+"&cheese="+cheese+"&veggies="+veggies;	
 
-	http.open("POST","server_side/createOrder.php", true);
+	http.open("POST","src/createOrder.php", true);
 	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 	http.onreadystatechange = function() {
@@ -31,9 +26,9 @@ function order(){
 
 function deleteOrder(id){
 	var conf = confirm("Are you sure you want to delete?");
-	if (conf == true) {
+	if (conf) {
 		var xmlDelete = new XMLHttpRequest();
-		xmlDelete.open("POST","server_side/deleteOrder.php",true);
+		xmlDelete.open("POST","src/deleteOrder.php",true);
 		xmlDelete.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 
 		xmlDelete.onreadystatechange = function(){
@@ -50,7 +45,7 @@ function deleteOrder(id){
 function getOrderDetails(id){
 	var hidden = document.getElementById("hidden_order_id").value = id;
 	var xmlGet = new XMLHttpRequest();
-	xmlGet.open("POST","server_side/getOrderDetails.php",true);
+	xmlGet.open("POST","src/getOrderDetails.php",true);
 	xmlGet.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 
 	xmlGet.onreadystatechange = function(){
@@ -80,7 +75,7 @@ function UpdateOrders(){
 	var veggies = document.getElementById("hidden_veggies").value;
 	var request = "order_id="+order_id+"&fullName="+fullName+"&bread="+bread+"&sauce="+sauce+"&sandwich="+sandwichType+"&cheese="+cheese+"&veggies="+veggies;
 
-	xmlUpdate.open("POST","server_side/UpdateOrder.php",true);
+	xmlUpdate.open("POST","src/updateOrder.php",true);
 	xmlUpdate.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 
 	xmlUpdate.onreadystatechange = function(){
@@ -96,7 +91,7 @@ function UpdateOrders(){
 function JSONviewer(id){
 	var hidden = document.getElementById("hidden_order_id").value = id;
 	var xmlGet = new XMLHttpRequest();
-	xmlGet.open("POST","server_side/getOrderDetails.php",true);
+	xmlGet.open("POST","src/getOrderDetails.php",true);
 	xmlGet.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 
 	xmlGet.onreadystatechange = function(){
@@ -106,18 +101,4 @@ function JSONviewer(id){
 	}
 
 	xmlGet.send("order_id="+hidden);
-}
-
-function loadOrders(){
-  var loadOrders = new XMLHttpRequest();
-
-  loadOrders.onreadystatechange = function(){
-    if (this.readyState == 4 && this.status == 200) {
-      var data = this.responseText;
-      document.getElementById("results").innerHTML = data;
-    }
-  }
-
-  loadOrders.open("GET","server_side/retrieveOrder.php",true);
-  loadOrders.send();
 }
