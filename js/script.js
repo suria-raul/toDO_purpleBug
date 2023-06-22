@@ -41,6 +41,7 @@ function getOrderDetails(id){
 		data: {order_id: id},
 		success: function(response) {
 			let res = JSON.parse(response)
+			$("#hidden_order_id").val(res.order_id)
 			$("#hidden_fullName").val(res.user)
 			$("#hidden_bread").val(res.bread)
 			$("#hidden_sauce").val(res.sauce)
@@ -52,27 +53,23 @@ function getOrderDetails(id){
 }
 
 function UpdateOrders(){
-	var xmlUpdate = new XMLHttpRequest();
-	var order_id = document.getElementById("hidden_order_id").value;
-	var fullName = document.getElementById("hidden_fullName").value;
-	var bread = document.getElementById("hidden_bread").value;
-	var sauce = document.getElementById("hidden_sauce").value;
-	var sandwichType = document.getElementById("hidden_sandwichType").value;
-	var cheese = document.getElementById("hidden_cheese").value;
-	var veggies = document.getElementById("hidden_veggies").value;
-	var request = "order_id="+order_id+"&fullName="+fullName+"&bread="+bread+"&sauce="+sauce+"&sandwich="+sandwichType+"&cheese="+cheese+"&veggies="+veggies;
-
-	xmlUpdate.open("POST","src/updateOrder.php",true);
-	xmlUpdate.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
-	xmlUpdate.onreadystatechange = function(){
-		if (this.readyState == 4 && this.status == 200) {
-			alert(this.responseText);
+	$.ajax({
+		type: "POST",
+		url: "src/updateOrder.php",
+		data: {
+			order_id: $("#hidden_order_id").val(),
+			fullName: $("#hidden_fullName").val(),
+			bread: $("#hidden_bread").val(),
+			sauce: $("#hidden_sauce").val(),
+			sandwich: $("#hidden_sandwichType").val(),
+			cheese: $("#hidden_cheese").val(),
+			veggies: $("#hidden_veggies").val()
+		},
+		success: function(response) {
+			alert(response)
 			window.location = "allOrders.php"
-		} 
-	}
-
-	xmlUpdate.send(request);
+		}
+	})
 }
 
 function JSONviewer(id){
