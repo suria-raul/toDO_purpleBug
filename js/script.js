@@ -35,25 +35,20 @@ function deleteOrder(id){
 }
 
 function getOrderDetails(id){
-	var hidden = document.getElementById("hidden_order_id").value = id;
-	var xmlGet = new XMLHttpRequest();
-	xmlGet.open("POST","src/getOrderDetails.php",true);
-	xmlGet.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
-	xmlGet.onreadystatechange = function(){
-		if (this.readyState == 4 && this.status == 200) {
-			var results = this.responseText;
-			var response = JSON.parse(results);
-			document.getElementById("hidden_fullName").value = response.user;
-			document.getElementById("hidden_bread").value = response.bread;
-			document.getElementById("hidden_sauce").value = response.sauce;
-			document.getElementById("hidden_sandwichType").value = response.sandwich;
-			document.getElementById("hidden_cheese").value = response.cheese;
-			document.getElementById("hidden_veggies").value = response.veggie;
+	$.ajax({
+		type: "POST",
+		url: "src/getOrderDetails.php",
+		data: {order_id: id},
+		success: function(response) {
+			let res = JSON.parse(response)
+			$("#hidden_fullName").val(res.user)
+			$("#hidden_bread").val(res.bread)
+			$("#hidden_sauce").val(res.sauce)
+			$("#hidden_sandwichType").val(res.sandwich)
+			$("#hidden_cheese").val(res.cheese)
+			$("#hidden_veggies").val(res.veggie)
 		}
-	}
-
-	xmlGet.send("order_id="+hidden);
+	})
 }
 
 function UpdateOrders(){
