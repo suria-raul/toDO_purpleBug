@@ -22,18 +22,15 @@ function order(){
 function deleteOrder(id){
 	var conf = confirm("Are you sure you want to delete?");
 	if (conf) {
-		var xmlDelete = new XMLHttpRequest();
-		xmlDelete.open("POST","src/deleteOrder.php",true);
-		xmlDelete.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-
-		xmlDelete.onreadystatechange = function(){
-			if (this.readyState == 4 && this.status == 200) {
-				alert(this.responseText);
+		$.ajax({
+			type: "POST",
+			url: "src/deleteOrder.php",
+			data: {order_id: id},
+			success: function(response) {
+				alert(response);
 				window.location = "allOrders.php";
 			}
-		}
-
-		xmlDelete.send("order_id="+id);
+		})
 	}
 }
 
