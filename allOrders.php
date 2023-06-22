@@ -15,7 +15,7 @@
 
 </head>
 <body>
-<div id="results"></div>
+<div id="result"></div>
 <!-- The Modal -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
