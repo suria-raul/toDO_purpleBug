@@ -35,3 +35,8 @@
 #hidden_order_id {
 	display: none;
 }
+
+#results tr td span {
+	margin: .5rem;
+	cursor: pointer;
+}
